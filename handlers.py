@@ -2,6 +2,7 @@ from aiogram import types, F, Router
 from aiogram.types import Message
 from aiogram.filters import Command
 
+import slots_keyboard
 import menu_keyboard
 import text
 
@@ -13,10 +14,12 @@ async def start_handler(msg: Message):
     await msg.answer(text.greet.format(name=msg.from_user.full_name), reply_markup=menu_keyboard.menu)
 
 # Все что ниже это обработчики кнопок в главном меню(1)
-@router.callback_query(F.data == "my_slots")
+    
+# @router.callback_query(F.data == "my_slots")
+@router.callback_query(Command("my_slots"))
 async def slots_command(callback_query: types.CallbackQuery):
     await callback_query.answer()
-    await callback_query.message.answer(text.slots_test)
+    await callback_query.answer(reply_markup=slots_keyboard.sl)
 
 @router.callback_query(F.data == "places")
 async def slots_command(callback_query: types.CallbackQuery):
