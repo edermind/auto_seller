@@ -5,7 +5,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardBu
 menu = [
     [InlineKeyboardButton(text="🚗  Мои слоты", callback_data="my_slots"),
     InlineKeyboardButton(text="🏢 Площадки", callback_data="places")],
-    [InlineKeyboardButton(text="☎️ Уведомления", callback_data="")],
+    [InlineKeyboardButton(text="☎️ Уведомления", callback_data="Notifications")],
     [InlineKeyboardButton(text="💡 Инфо", callback_data="info"),
     InlineKeyboardButton(text="🛟 Техподдержка", callback_data="supports")],
 ]
