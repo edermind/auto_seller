@@ -2,9 +2,9 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove
 
 places_keyboard = [
-        [InlineKeyboardButton(text= "drom",callback_data= "drom"),
-        InlineKeyboardButton(text= "auto.ru", callback_data= "autoru")],
-        [InlineKeyboardButton(text= "avito", callback_data= "avito")],
+        [InlineKeyboardButton(text= "Дром",callback_data= "drom"),
+        InlineKeyboardButton(text= "Авто.ру", callback_data= "autoru")],
+        [InlineKeyboardButton(text= "Авито", callback_data= "avito")],
         [InlineKeyboardButton(text= "📍 Главное меню", callback_data= "menu")]
     ]
 
