@@ -15,7 +15,7 @@ import states
 
 router = Router()
 
-@router.callback_query(F.data == "my_slots")
+@router.callback_query(F.data == "new_slot")
 async def new_slot_handler(callback_query: types.CallbackQuery, state:FSMContext):
     await callback_query.answer()
     await callback_query.message.answer('Вставьте ссылку: ')

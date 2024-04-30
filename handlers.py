@@ -3,6 +3,8 @@ from aiogram.types import Message,ReplyKeyboardRemove
 from aiogram.filters import Command,StateFilter
 from aiogram.fsm.context import FSMContext
 
+from drom_parser import parse_drom
+
 
 import slots_keyboard
 import menu_keyboard
@@ -32,8 +34,8 @@ async def my_slots_handler(callback_query: types.CallbackQuery, state:FSMContext
     await callback_query.message.answer("Мои слоты", reply_markup=slots_keyboard.sl)
     await state.set_state(states.slots_class.slots_menu)
     current_state = await state.get_state()
-    await callback_query.message.answer(f"Бот находится в состоянии: {current_state}")
-    await callback_query.message.answer(reply_markup=ReplyKeyboardRemove())
+    # await callback_query.message.answer(f"Бот находится в состоянии: {current_state}")
+
 
 #обработчик кнопки"Площадки" в гл.меню 
 @router.callback_query(F.data == "places")
@@ -60,6 +62,18 @@ async def noti_handler(callback_query: types.CallbackQuery):
     await callback_query.message.answer(text.slots_test)
     
 #вот до сюда(1)
+@router.callback_query(F.data == "new_slot")
+async def new_slot_handler(callback_query: types.CallbackQuery, state:FSMContext):
+    await callback_query.answer()
+    await callback_query.message.answer('Вставьте ссылку: ')
+    await state.set_state(states.slots_class.waiting_for_link)
+
+@router.message()
+async def parse_link_and_send_result(message: types.Message):
+    link = message.text
+    result = await parse_drom(link)
+    await message.answer(f"Количество объявлений: \"{result}\"")
+    
 
 
 
