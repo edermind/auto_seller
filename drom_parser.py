@@ -12,4 +12,5 @@ async def parse_drom(link):
             number_of_ads = element.text.split()
             result = ''.join(filter(str.isdigit, number_of_ads))
             return result
-    return "Ошибка при парсинге"
+    result = "Ошибка при парсинге"
+    return result
